@@ -1,0 +1,41 @@
+.card{
+    
+    overflow: hidden;
+}
+.card-body{
+    overflow: hidden;
+    /* max-height: 300px; */
+}
+.desc-wrapper{
+    max-height: 300px;
+    overflow: hidden;
+    text-align: justify;
+}
+.tags{
+    width: fit-content;
+    /* border: 1px solid black; */
+    /* font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px; */
+    background-color: #eee;
+}
+
+.tags img{
+    width: 25px;
+}
+h6{
+    width: fit-content;
+}
+
+.user_logo{
+    border: 2px solid #999;
+    display: flex;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+}

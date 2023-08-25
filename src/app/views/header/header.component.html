@@ -1,0 +1,39 @@
+<nav class="container navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+  
+    <div class="col-12 d-flex" id="navbarSupportedContent">
+        <div class="col-4">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <button class="nav-link" routerLink="/home">Home</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" routerLink="/assign-task">Assign a task</button>
+                </li>
+                
+                <li class="nav-item">
+                  <button class="nav-link" routerLink="/dashboard">Dashboard</button>
+                </li>
+              </ul>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4 d-flex justify-content-end align-items-center pe-1">
+
+          <div *ngIf="isLoggedIn">
+            
+            <button  (click)="logout()" class="btn btn-transparent">{{username}}<i class="fa-solid fa-right-from-bracket my-auto ms-2"></i></button>
+          </div>
+          <div *ngIf="!isLoggedIn">
+            <button *ngIf="route.url !== '/login' && route.url !== '/register'" class="btn btn-transparent me-1" routerLink="/register">Register Now <i class="fas fa-arrow-right my-auto ms-2" aria-hidden="true"></i></button>
+            <button *ngIf="route.url === '/login'" class="btn btn-transparent me-1" routerLink="/register">Register Now <i class="fas fa-arrow-right my-auto ms-2" aria-hidden="true"></i></button>
+            <button *ngIf="route.url === '/register'" class="btn btn-transparent me-1" routerLink="/login"><i class="fas fa-lock my-auto me-2" aria-hidden="true"></i>Continue Login</button>
+          </div>
+            
+            <!-- <div *ngIf="isLoggedIn" class="btn btn-warning me-1" (click)="logout()" >logout</div> -->
+        </div>
+      
+     
+    </div>
+  </nav>

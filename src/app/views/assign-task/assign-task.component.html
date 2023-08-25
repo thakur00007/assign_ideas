@@ -1,0 +1,50 @@
+<section class=" ">
+    <div class="mask d-flex  h-100 ">
+      <div class="container mt-3 py-2">
+        <div class="row d-flex justify-content-center align-items-start h-100">
+          <div class="col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body px-5 py-1">
+                <h6 *ngIf="resMsg" class="text-center alert alert-{{alertColor}} mb-0 p-2">{{resMsg}}<button (click)="resMsg = ''" class="btn btn-close float-end pb-0"></button></h6>
+                <h2 class="text-uppercase text-center my-4">Assign New Task</h2>
+  
+                <form #uploadForm="ngForm">
+  
+                  <div class="form-outline mb-4">
+                    <input [(ngModel)]="uploaddata.title" type="text" name="title" id="form3Example1cg" class="form-control " placeholder=" " [required]="true"/>
+                    <label class="form-label" for="form3Example1cg">Title</label>
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <!-- <input [(ngModel)]="uploaddata.description" type="texta" name="email" id="form3Example3cg" class="form-control " placeholder=" " [required]="true"/> -->
+                    <textarea [(ngModel)]="uploaddata.description" type="texta" name="email" id="form3Example3cg" class="form-control " maxlength="1000" placeholder=" " [required]="true"></textarea>
+                    <label class="form-label" for="form3Example3cg">Short Details</label>
+                  </div>
+                  
+                  <div class="form-outline mb-4">
+                    <tag-input class="" name="tags"
+                     [ngModel]="uploaddata.tags"
+                     [onlyFromAutocomplete]="true"
+                     [addOnBlur]="true"
+                     [clearOnBlur]="true"
+                     (onAdd)="onAddTag($event)"
+                     (onRemove)="onRemoveTag($event)"
+                     
+                     >
+                        <tag-input-dropdown [autocompleteItems]="tagItems"></tag-input-dropdown>
+                    </tag-input>
+                  </div>
+  
+                  <div class="d-flex justify-content-center mb-4">
+                    <button type="button" [disabled]="!uploadForm.valid" (click)="createUpload(uploadForm)"
+                      class="btn btn-success btn-block w-100 gradient-custom-4 text-body">Assign</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

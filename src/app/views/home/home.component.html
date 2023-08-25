@@ -1,0 +1,49 @@
+<h1>Project <code>Ideas</code></h1>
+<div *ngFor="let data of response.data" class="card mb-2">
+    <div class="card-body p-3 px-4">
+        <div class="row heading border-bottom pb-2">
+            <div class="col-lg-6">
+                <h6 class="mb-0">{{data.title}} ||</h6>
+            </div>
+            
+            <div class="col-lg-6 row justify-content-end ms-1 my-1 d-flex">
+                <div *ngFor="let tags of data.tags" class="tags bg-secondery me-1 p-0"><img title="{{tags}}" src="/assets/icons/{{tags}}.png" alt=""></div>
+            </div>
+            
+        </div>
+        <div class="desc-wrapper overflow-hidden">
+            <p>{{data.description}}</p>
+        </div>
+        <div class="row justify-content-center w-100 border-top mt-1 pt-1">
+            <div class="col-6">
+                <!-- <h6 *ngIf="data.demoLink" class="">
+                    Quick links: <a href="{{data.demoLink}}">{{data.demoLink}}</a>
+                </h6> -->
+            </div>
+            <div class="col-6 d-flex justify-content-end">assigned by, <b><i>{{data.userName}}</i></b></div>
+                
+        </div>
+    </div>
+</div>
+<!-- <div class="card mb-2">
+    <div class="card-body p-3 px-4">
+        <div class="row heading border-bottom pb-2">
+            <div class="col-lg-6">
+                <h6 class="mb-0">First Idea ||</h6>
+            </div>
+            
+            <div class="col-lg-6 row justify-content-end ms-1 my-1 d-flex">
+                <div class="tags bg-secondery me-1">Java</div> <div class="tags me-1">Angular</div>
+            </div>
+            
+        </div>
+        <div class="desc-wrapper overflow-hidden">
+            <p>Lmollitia aliq, ipsa, possimus voluptatem ducimus neque incidunt alias optio sunt tempore et at totam quibusdam quod voluptatibus mollitia est. Nisi, minima aspernatur. Fuga neque recusandae consectetur amet sequi accusantium modi, ea ipsum doloribus totam sint similique harum qui molestiae asperiores, quidem voluptatum corporis quos? Libero vitae quo animi perferendis omnis praesentium laborum quaerat earum. Cumque, dicta magnam adipisci aperiam blanditiis, quo, minus magni qui voluptate nihil temporibus modi aliquam? Repellat fuga tempore aperiam laborum esse. Blanditiis fugit, ab distinctio quidem laboriosam voluptas, atque qui, dicta quia maxime cum? Deleniti aperiam consequatur doloremque dicta! In cum deserunt facilis et molestiae dolor sed quam ipsum quos similique, sapiente ea eaque repudiandae dignissimos dolorem alias ex odio voluptate nesciunt nobis reiciendis! Deleniti similique sequi consectetur dignissimos commodi tempore unde quidem sapiente nulla quasi suscipit quae corrupti dolore exercitationem assumenda quo, dolor labore asperiores libero voluptates? Sunt sit quisquam at enim voluptate quasi perferendis optio magnam, beatae voluptatibus! Praesentium soluta modi fugiat nemo rerum quos, deserunt hic quasi dignissimos. Quos, earum corporis. Sunt ullam cupiditate, harum et ipsum adipisci deserunt numquam.</p>
+        </div>
+        <div class="row w-100 border-top mt-1 pt-1">
+            <h6 class="">
+                links: <a href="https://google.com">Google</a>
+            </h6>
+        </div>
+    </div>
+</div> -->
