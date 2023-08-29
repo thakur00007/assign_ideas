@@ -92,3 +92,49 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.updatePass = async (req, res) => {
+  if (!helper.verifyLoggedIn(req)) {
+    helper.responseSender(res, 200, "fail", "Unauthorised Login", []);
+    return;
+  }else{
+    const obj = {
+      email: req.body.auth.email,
+      oldPass: req.body.data.oldPass,
+      newPass: req.body.data.newPass,
+      cnfPass: req.body.data.cnfPass,
+    }
+    if(!obj.oldPass || !obj.newPass || !obj.cnfPass){
+      helper.responseSender(res, 200, "fail", "One or more fields are empty", []);
+    }else{
+      let auth = new Auth();
+      db.query(auth.find("user", obj.email), async (err, result) => {
+        if(err){
+          helper.responseSender(res, 200, "fail", err.message, []);
+        }else if(result.length === 1){
+          if(obj.newPass === obj.cnfPass){
+            const matched = await helper.comparePass(obj.oldPass, result[0].password);
+            if(matched){
+              const hash = await helper.passwordHasher(obj.newPass);
+              db.query(auth.updatePass("user", obj.email, hash), (err, result) => {
+                if(err){
+                  helper.responseSender(res, 200, "fail", err.message, []);
+                }else{
+                  helper.responseSender(res, 200, "success", "Password Updated Successfully", []);
+                }
+              })
+            }else{
+
+              helper.responseSender(res, 200, "fail", "Wrong Password", []);
+            }
+            console.log(result[0].password);
+          }else{
+            helper.responseSender(res, 200, "fail", "password and confirm password does't match", []);
+          }
+          
+        }
+      })
+
+    }
+  }
+}

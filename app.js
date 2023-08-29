@@ -6,10 +6,10 @@ const idea = require("./routes/ideaRoutes");
 const fetch = require("./routes/fetchRouter");
 app.use(cors());
 app.use(express.json());
-
-app.use("/auth", auth);
-app.use("/ideas", idea);
-app.use("/fetch", fetch);
+const defaultRoute = "/api/v1"
+app.use(defaultRoute+"/auth", auth);
+app.use(defaultRoute+"/ideas", idea);
+app.use(defaultRoute+"/fetch", fetch);
 
 app.use((req, res) => {
   res.status(404).json({

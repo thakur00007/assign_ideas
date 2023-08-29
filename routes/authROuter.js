@@ -9,4 +9,7 @@ router.post("/signup", authController.signup);
 
 //login
 router.post("/login", authController.login);
+
+//updatePassword
+router.post("/updatePass", authController.updatePass);
 module.exports = router;
