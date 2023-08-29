@@ -20,7 +20,7 @@
                     </form>
                 </div>
             </div>
-            
+
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="card m-2">
@@ -28,24 +28,24 @@
                     <h6 class="text-center">Change Password</h6>
                 </div>
                 <div class="card-body p-5">
-                    <form >
+                    <form #formData="ngForm">
                         <div class="form-outline mb-4">
-                            <input type="text" id="cPass" class="form-control" placeholder=" "/>
-                            <label class="form-label" for="cPass">Current Password</label>
+                            <input type="text" [(ngModel)]="updatePass.oldPass" name="oldPass" id="oldPass" class="form-control" [required]="true" placeholder=" "/>
+                            <label class="form-label" for="oldPass">Current Password</label>
                         </div>
                         <div class="form-outline mb-4">
-                            <input type="text" id="newPass" class="form-control" placeholder=" "/>
+                            <input type="password" [(ngModel)]="updatePass.newPass" name="newPass" id="newPass" class="form-control" [required]="true" placeholder=" "/>
                             <label class="form-label" for="newPass">New Password</label>
                         </div>
                         <div class="form-outline mb-4">
-                            <input type="text" id="cnfNewPass" class="form-control" placeholder=" "/>
+                            <input type="password" [(ngModel)]="updatePass.cnfPass" name="cnfPass" id="cnfNewPass" class="form-control" [required]="true" placeholder=" "/>
                             <label class="form-label" for="cnfNewPass">Confirm Password</label>
                         </div>
-                        <button class="btn w-100 gradient-custom-4">Change</button>
+                        <button [disabled]="!formData.valid" (click)="changePass(formData)" class="btn w-100 gradient-custom-4">Change</button>
                     </form>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>

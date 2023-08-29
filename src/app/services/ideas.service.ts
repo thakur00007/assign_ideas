@@ -9,7 +9,7 @@ import { LocalStorage } from '../helper/local-storage';
 })
 export class IdeasService {
 
-  private baseUrl = "http://localhost:5000/";
+  private baseUrl = "http://localhost:3000/api/v1/";
   constructor(private _http: HttpClient) { }
   localStorage: LocalStorage = new LocalStorage()
 
