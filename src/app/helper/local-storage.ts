@@ -9,7 +9,7 @@ export class LocalStorage {
     } catch (error) {
         return null
     }
-    
+
   }
 
   getAuthDetl(){
@@ -22,8 +22,7 @@ export class LocalStorage {
 
   isValidToken() {
     const isExpired = this.get('exp') < new Date().getTime()
-    const isInvalid =  !isExpired && this.get('token') != null && this.get('token') != '';
-    return isInvalid
+    return !isExpired && this.get('token') != null && this.get('token') != ''
   }
 
   delete(key: string) {

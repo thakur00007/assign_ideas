@@ -16,6 +16,8 @@ export class DashboardComponent {
   // username: string = this.localStorage.get('name')
   user:User = new User()
   updatePass: UpdatePass = new UpdatePass()
+  errMsg!:string
+  msg!:string
   ngOnInit(){
     if(!this.localStorage.isValidToken()){
       this.router.navigate(['/login'])
@@ -27,11 +29,22 @@ export class DashboardComponent {
 
   changePass(formData: NgForm) {
     this.auth.updatePass(this.updatePass).subscribe(res => {
-      alert(res.message)
-      if (res.status === "success"){
+      this.closeAlert()
+      if (res.status === "fail") {
+        this.errMsg = res.message
         formData.resetForm()
       }
+      if (res.status === "success"){
+        this.msg = res.message
+        formData.resetForm()
+      }
+      setTimeout(() => this.closeAlert(), 5000)
     })
+  }
+
+  closeAlert() {
+    this.msg = ''
+    this.errMsg = ''
   }
 }
 
