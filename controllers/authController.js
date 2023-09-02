@@ -66,7 +66,6 @@ exports.login = async (req, res) => {
       if (err) {
         helper.responseSender(res, 200, "fail", err.message, []);
       } else if (result.length == 1) {
-        // console.log(result);
         const matched = await helper.comparePass(obj.pass, result[0].password);
 
         if (matched) {
@@ -127,7 +126,6 @@ exports.updatePass = async (req, res) => {
 
               helper.responseSender(res, 200, "fail", "Wrong Password", []);
             }
-            console.log(result[0].password);
           }else{
             helper.responseSender(res, 200, "fail", "password and confirm password does't match", []);
           }
