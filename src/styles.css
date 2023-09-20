@@ -1,5 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #325975;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #999999;
+  border-radius: 5px;
+}
+
+
 body{
     background-color: #f8f9fa;
 }
@@ -8,7 +22,7 @@ body{
 }
 .form-control:focus{
     box-shadow: none;
-    
+
 }
 .form-label{
     position: absolute;
@@ -39,12 +53,11 @@ body{
 .gradient-custom-4 {
     /* fallback for old browsers */
     background: #84fab0;
-    
+
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-    
+
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
     }
-    
-    
+

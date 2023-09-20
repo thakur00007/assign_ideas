@@ -1,5 +1,5 @@
 .card{
-    
+
     overflow: hidden;
 }
 .card-body{
@@ -8,8 +8,9 @@
 }
 .desc-wrapper{
     max-height: 300px;
-    overflow: hidden;
+    overflow: auto;
     text-align: justify;
+  padding: 5px;
 }
 .tags{
     width: fit-content;
