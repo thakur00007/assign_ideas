@@ -1,0 +1,9 @@
+.nav_active {
+  font-weight: 600;
+  color: black;
+}
+
+.nav_active button{
+  color: #0c9d42;
+}
+
