@@ -24,43 +24,39 @@ export class RegisterComponent {
     }else{
       this.localStorage.clearAll()
     }
-    
+
   }
 
 
   user:User = new User()
   response: AllResponse = new AllResponse()
-  
+
   register(model: any){
     if (model.valid) {
       if(this.user.pass === this.user.cnfPass){
         this.authService.register(this.user).subscribe(res => {
-          console.log(res)
           this.response = res
-          // console.log(this.response.data[0].token);
           if(this.response.status === "success"){
-              this.localStorage.set('user', JSON.stringify(this.response.data[0]))
-            // this.localStorage.set('username', this.response.data[0].name)
-            // this.localStorage.set('email', this.response.data[0].email)
+            this.localStorage.set('user', JSON.stringify(this.response.data[0]))
             this.ngOnInit()
             this.authService.isLoggedIn.next(true)
           }else{
             this.errMsg = this.response.message;
           }
-          
         },
         err => {
-          this.errMsg = err.message;
-          console.log(err)
+          this.errMsg = "Something Went Wrong! Please Try Again Later";
+          this.closeAlert()
           this.authService.isLoggedIn.next(false)
-        })        
+        })
       }else{
         this.errMsg = "password and confirm password not match!"
+        this.closeAlert()
       }
-    }    
+    }
   }
 
   closeAlert(){
-    this.errMsg = ''
+    setTimeout(() => (this.errMsg = ''), 5000)
   }
 }

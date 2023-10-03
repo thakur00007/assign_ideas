@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  
+
   constructor(private router: Router, private authService: AuthService){}
   errMsg!: string
   localStorage: LocalStorage = new LocalStorage()
@@ -24,7 +24,7 @@ export class LoginComponent {
     }else{
       this.localStorage.clearAll()
     }
-    
+
   }
 
   login(model: NgForm){
@@ -33,35 +33,29 @@ export class LoginComponent {
         console.log(res)
           this.response = res
           if(this.response.status === "success"){
-            console.log(this.response.data[0].token);
             this.localStorage.set('user', JSON.stringify(this.response.data[0]))
-            // this.localStorage.set('username', this.response.data[0].name)
-            // this.localStorage.set('email', this.response.data[0].email)
-            
             this.authService.isLoggedIn.next(true)
           }else{
             this.errMsg = this.response.message
-            console.log(res.message);
-            
+            this.closeAlert()
             this.authService.isLoggedIn.next(false)
             model.reset()
-            console.log(4554);
-            
+
           }
           this.ngOnInit()
       },
       err => {
-        console.log(err);
-        this.errMsg = err.message;
+        this.errMsg = "Something Went Wrong! Please Try Again Later"
         this.authService.isLoggedIn.next(false)
+        this.closeAlert()
       }
       )
     }
   }
-  
+
 
   closeAlert(){
-    this.errMsg = ''
+    setTimeout(() => (this.errMsg = ''), 5000)
   }
 
 
